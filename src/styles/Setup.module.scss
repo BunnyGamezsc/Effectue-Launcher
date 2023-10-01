@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap');
+
+/* *{
+    margin: 0;
+    padding: 0;
+    font-family:'Lato', sans-serif;
+} */
+/* body{
+    background-color: black;
+} */
+@keyframes heroFade {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.hero{
+    
+    height: 100%;
+    width: 100%;
+    
+    /* background-image: linear-gradient(rgba(213, 213, 213, 0.4),rgba(94, 94, 94, 0.4)),url(../images/banner2.jpg); */
+    /* background-image: url(../images/banner3.jpg); */
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    
+}
+.hero h1 {
+    display: flex;
+    padding:0.3rem;
+    padding-top: 1rem;
+    justify-content: center;
+    font-size: 2.3rem;
+}
+.hero2{
+    height: 100%;
+    width: 100%;
+    /* background-image: linear-gradient(rgba(94, 94, 94, 0.4),rgba(94, 94, 94, 0.4)),url(/img/signup/banner.jpg); */
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    /* display: none; */
+}
+
+.form-box{
+    animation: heroFade 1s forwards;
+    width: 380px;
+    height: 480px;
+    position: relative;
+    margin: 6% auto;
+    background: #ec9fdb;
+    padding: 5px;
+    overflow: hidden;
+    border-radius: 1rem;
+    box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.2), -1px -1px 4px 1px rgba(0, 0, 0, 0.2) ;
+
+
+}
+.form-box2{
+    width: 380px;
+    height: 480px;
+    position: relative;
+    margin: 6% auto;
+    background: #000000;
+    padding: 5px;
+    overflow: hidden;
+    color:white;
+}
+.switch-box{
+    width: 240px;
+    margin: 35px auto;
+    position: relative;
+    /* box-shadow: 0 0 20px 9px #ff61241f; */
+    border-radius: 30px;
+}
+.switch-mode{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 34px;
+    padding-right: 33px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+}
+#switch-gradient{
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background: linear-gradient(to right, #ff105f,#ffad06);
+    border-radius: 30px;
+    transition: 0.5s;
+}
+
+.input-group{
+    top: 120px;
+    position: absolute;
+    width: 280px;
+    transition: 0.5s;
+    padding-left: 3rem;
+}
+.input-field{
+    width: 100%;
+    padding: 10px 0;
+    margin: 5px 0;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 1px solid #999;
+    outline: none;
+    background:transparent;
+    color: rgb(36, 46, 186);
+}
+.submit-btn{
+    width:85%;
+    
+    padding: 12px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    margin-top: 12px;
+    background: linear-gradient(to right, #ff105f,#ffad06);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+}
+
+#login{
+    left: 50px;
+}
+#signup{
+    left: 450px;
+}
+
+.check-box{
+   margin: 15px 10px 15px 0;
+
+}
+.remember{
+   color: #777;
+   font-size: 12px;
+}
+
+.cool:hover{
+    color:rgb(255, 255, 255);
+    border-bottom: 2px solid #bdbdbd;
+    cursor: pointer;
+}
+.cool:active{
+    color:rgb(192, 192, 192);
+    border-bottom: 2px solid #bdbdbd;
+    cursor: pointer;
+}
+.cool{
+    border-bottom: 2px solid #999; 
+    cursor: pointer;
+}
+
+ol li {
+    padding: 5px;
+    margin-left: 35px;
+}
+
+ol {
+    padding: 20px;
+}
+
+/* CSS */
+.button-24 {
+  background: #972b28;
+  border: 1px solid #FF4742;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.button-24:hover,
+.button-24:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: #FF4742;
+}
+
+.button-24:active {
+  opacity: .5;
+}
+
+.banner2{
+    background-image: url(../images/banner2.jpg);
+   }
+   .banner3{
+    background-image: url(../images/banner3.jpg);
+   }
+
+   .banner4{
+    background-image: url(../images/banner4.png);
+   }
