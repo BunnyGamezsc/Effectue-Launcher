@@ -3,7 +3,7 @@ import { Component, For, createSignal, onMount } from "solid-js";
 import { renderToString } from "solid-js/web";
 import isOnline from 'is-online';
 
-const Verisons: Component = () => {
+const Versions: Component = () => {
   // get the current minecraft version
   //     20
   // get the next version x3
@@ -13,6 +13,7 @@ const Verisons: Component = () => {
   }
   let newsElem: HTMLDivElement | undefined;
   const [version, setVersion] = createSignal([20])
+  const [selectedVersion, setselectedVersion] = createSignal({"id": "1.20", "type": "release", "url": "", "time": "", "releaseTime": ""})
   const [mainversion, setmainVersion] = createSignal([
     {
         "id": "1.20",
@@ -22,9 +23,19 @@ const Verisons: Component = () => {
         "releaseTime": "0"
     }
 ])
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const selectVersion = (el: Element, value) => {
+  el.addEventListener("click",()=>{
+    setselectedVersion(value);
+    console.log(selectedVersion())
+    for (const child of el.parentElement!.children){
+      child.setAttribute("version-selected", "false")
+    }
+    el.setAttribute("version-selected", "true")
+  })
+}
   onMount(()=>{
-  
+   console.log(selectedVersion()) 
     setmainVersion([])
     const temp_version = version()
     for (let index = 0; index < version()[0]; index!++){
@@ -33,61 +44,8 @@ const Verisons: Component = () => {
     }
     temp_version.pop()
     let displayVersions = temp_version
-    // setVersion(temp_version)
-    // console.log(temp_version)
-    // invoke("get_mojang_versions").then((returnData)=>{
-    //   console.log(returnData)
-    // })
-    // fetch("https://pston-meta.mojang.com/mc/game/version_manifest.json")
-    // .then(async r => {
-    //   const json = r.json()
-    //   const isJson = r.headers.get('content-type')?.includes('application/json');
-    //   const data = isJson ? json : null;
-    //   if (!r.ok) {
-    //     // get error message from body or default to response status
-    //     const error = (data && data.message) || r.status;
-    //     return Promise.reject(error);
-    // }
-    //   return json})
-    // .then((data) =>{
-    //   // const data = r.json();
-    //   console.log(data)
-    //   console.log("[Server] " + data)
-    //   if (typeof data == "undefined"){
-    //     console.log("error: " + "")
-    //   return
-    //   }
-    //   const dataa = data as unknown as {latest: {release: string}, versions: [ 
-    //     {id: string, type: string, url: string, time: string, releaseTime: string}]}
-    //   const latest = dataa.latest.release
-    //   const versions = dataa.versions.filter((versionBlock: { type: string; })=>{
-    //     // console.log(versionBlock.type)
-    //     if(versionBlock.type === "release"){
-    //       return versionBlock.type
-    //     }else{
-    //       return false
-    //     }
-    //   })
-    //   const mainVersions = versions.filter((idBlock: { id: string; }) =>{
-    //     if (isNaN(Number(idBlock.id))){
-    //       return false
-    //     }else{
-    //       return idBlock.id
-    //     }
-    //   })
-      
-    //   console.log(latest)
-    //   console.log(versions)
-    //   console.log(mainVersions)
-    //   setmainVersion(mainVersions)
-    //   console.log(mainversion())
-    // }).catch(error => {
-    //   // console.log(error)
-    //   // console.log(newsElem!.innerHTML)
-    //   newsElem.outerHTML = '<div style="position: relative;top: -26rem;left: 4vw;padding-top: 90vh;" id="loadingDIV"><h1>Loading...</h1></div>';
-    //   // newsElem.style.display = 'block';
-    //   console.error(`[Effectue Server] ${error}`);
-    // })
+
+    
     fetch('https://piston-meta.mojang.com/mc/game/version_manifest.json')
     .then(async response => {
         const json = response.json()
@@ -114,14 +72,22 @@ const Verisons: Component = () => {
         const dataa = data
         const latest = dataa.latest.release
         const versions = dataa.versions.filter((versionBlock)=>{
-          // console.log(versionBlock.type)
-          if(versionBlock.type === "release"){
+          console.log(versionBlock.id)
+          console.log(Number(versionBlock.id))
+          if (versionBlock.id == "1.2.1"){
+            const ver = versionBlock
+            ver.id = "1.2"
+            return ver.type
+          }
+          if(versionBlock.type === "release" || isNaN(Number(versionBlock.id)) == false || versionBlock.id == "1.2.1"){
             return versionBlock.type
           }else{
             return false
           }
         })
         const mainVersions = versions.filter((idBlock) =>{
+          // console.log(idBlock.id)
+          // console.log(Number(idBlock.id))
           if (isNaN(Number(idBlock.id))){
             return false
           }else{
@@ -130,12 +96,19 @@ const Verisons: Component = () => {
         })
         
         console.log(latest)
-        console.log(versions)
+        
+        console.warn(versions)
         // console.log(mainVersions)
+        // let g = mainVersions
+        // g.push({"id": "0.1", "type": "release", "url": "", "time": "", "releaseTime": ""})
+        // setmainVersion(g)
+        // console.error(mainversion())
         setmainVersion(mainVersions)
         console.log(mainversion())
+        let cool = mainVersions[0]
+        setselectedVersion(cool)
 
-
+        
         const versionBannerFiles = ["1.20","1.19","1.18","1.17","1.16","1.15","1.9"]
         let unsetBannerFiles: string | string[] = []
         mainversion().forEach((version) => {
@@ -165,6 +138,15 @@ const Verisons: Component = () => {
     });
     
   })
+  function returnRows(arg0: { id: string; type: string; url: string; time: string; releaseTime: string; }[]): import("csstype").Property.GridTemplateRows<0 | (string & {}) > | undefined {
+    let rowsarr = []
+    for (let i = 0; i < Math.round((arg0.length/3 + 0.49999999)); i++) {
+      rowsarr.push("var(--newsRow)")
+    }
+    console.log(rowsarr.length)
+    return rowsarr.join(" ")
+  }
+
   return (
   <div class="launcher" style="animation: opacityFade 0.5s forwards;">
     <div class="play" style="height: 33vh;">
@@ -180,15 +162,15 @@ const Verisons: Component = () => {
         </div>
         
     </div>
-    <div id="news-container" class="news-container" style="height: 63vh;
+    <div id="news-container" class="news-container" style={{"height": "63vh", "grid-template-rows": returnRows(mainversion())}}
     
-    " ref={newsElem}>
+    ref={newsElem}>
 
               {/* <For each={items} fallback={<><div class="news-item"></div> <div class="news-item"></div> <div class="news-item"></div></>}>
                 {(item, index) => <div data-index={index()}>{item}</div>}
               </For> */}
-              <For each={mainversion()}>{(version: {id: string }, i) => 
-                <><div class="news-item version-hover" id={"versionbanner-" + version.id} style={{
+              <For each={mainversion()}>{(version: {id: string, type: string }, i) => 
+                <><div use:selectVersion={version} version-selected="false" class="news-item version-hover" id={"versionbanner-" + version.id} style={{
                   "background-image": `linear-gradient(rgb(103 103 103 / 40%), rgb(183 183 183 / 50%)),url(/versionBanner/${version.id}.jpg)`,
                   
                 }}> <h1>{version.id}</h1></div></>
@@ -215,4 +197,4 @@ const Verisons: Component = () => {
   );
 };
 
-export default Verisons;
+export default Versions;
