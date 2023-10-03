@@ -25,6 +25,7 @@ Effectue was created to provide a customizable and fast Minecraft Experience wit
 ### For Users...
 - A special signature for the Effectue Launcher 
 
+
 ## As you can see, Effectue provides much more customizablity all in the Launcher itself
 
 ## But Effectue is different than other launchers
@@ -38,3 +39,12 @@ Effectue was created to provide a customizable and fast Minecraft Experience wit
  **Server with special mods** | N/A |
  |Main Technology: Mod Loaders|**Main Technology: Custom Lunar Client**|
   |**App Size: ~70MB**|App Size: ~400MB|
+
+
+ 
+## Tech Stack
+
+**Frontend:** SolidJS, Tauri
+
+**Backend:** Rust, SQLite
+
