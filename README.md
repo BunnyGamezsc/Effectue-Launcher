@@ -1,5 +1,4 @@
 # Effectue Launcher - Effective Performace
-_**DEV Section:** This Branch has up to date (maybe bugged) work that is not a full release_
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-green?&style=for-the-badge)](https://opensource.org/licenses/Apache-2.0)
 [![Version](https://img.shields.io/badge/version-alpha%200.0.1-blue?&style=for-the-badge)](https://github.com/BunnyGamezsc/Effectue-Solid/releases)
