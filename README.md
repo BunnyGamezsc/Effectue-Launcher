@@ -18,7 +18,6 @@ Effectue was created to provide a customizable and fast Minecraft Experience wit
 - Use your own custom modpack of selected mods (Beta 2.1.0)
 - Use any library of community modpacks (v2.0.0)
 - Log on to servers with mods (that are shared to everyone or a secret) (v2.0.0)
-
 ## To the Client...
 ### For Server Creators...
 - Restrict Singleplayer and Multiplayer Access to your server when installing the modpack
