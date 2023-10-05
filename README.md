@@ -49,3 +49,61 @@ Effectue was created to provide a customizable and fast Minecraft Experience wit
 
 **Backend:** Rust, SQLite
 
+
+## Installation / Demo / Contribution
+
+### Prerequisites
+[Git](https://git-scm.com/downloads)
+<br>
+[NodeJS (npm)](https://nodejs.org/en/download)
+
+### Download
+
+Step 1: Option 1
+```bash
+  git clone https://github.com/BunnyGamezsc/Effectue-Solid.git
+  cd Effectue-Solid
+
+  # Install Dependencies
+  npm install
+```
+Step 1: Option 2
+```
+  Download Zip (Code > Download Zip)
+```
+
+```bash
+  cd /path/to/download/folder/Effectue-Solid
+
+  # Install Dependencies
+  npm install
+```
+
+Step 2.5 (optional): Open with VSCode
+```bash
+  code .
+```
+
+### Run
+Run with npm (development mode)
+```bash
+  npm run app
+```
+### Build
+
+#### For all platforms
+```bash
+  npm run make
+```
+#### Mac
+
+```bash
+  # Auto detects your specific chipset (M1 or Intel)
+  npm run make
+  # Universal application
+  npm run makeuniversal
+  # Intel Chip application
+  npm run makeintel
+  # Apple Silicon application
+  npm run makearm
+```
