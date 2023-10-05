@@ -43,11 +43,7 @@ Effectue was created to provide a customizable and fast Minecraft Experience wit
 
 
  
-## Tech Stack
 
-**Frontend:** SolidJS, Tauri
-
-**Backend:** Rust, SQLite
 
 
 ## Installation / Demo / Contribution
@@ -107,3 +103,9 @@ Run with npm (development mode)
   # Apple Silicon application
   npm run makearm
 ```
+
+## Tech Stack
+
+**Frontend:** SolidJS, Tauri
+
+**Backend:** Rust, SQLite
