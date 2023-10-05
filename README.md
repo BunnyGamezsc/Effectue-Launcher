@@ -7,6 +7,7 @@
 [![Version](https://img.shields.io/badge/Tauri-24C8D8.svg?style=for-the-badge&logo=Tauri&logoColor=white)](https://tauri.app/)
 
 
+
 ### Purpose
 Effectue was created to provide a customizable and fast Minecraft Experience with easy to use mods/modpacks!
 
