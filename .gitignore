@@ -4,3 +4,4 @@ dist
 .vscode
 src-tauri/target
 src/archives
+README.md
