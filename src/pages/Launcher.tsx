@@ -10,7 +10,7 @@ import newsImg from "../assets/Launcher/sidebar/news.png"
 import gearsImg from "../assets/Launcher/sidebar/gears.png"
 import { Component, Match, Switch, createSignal } from 'solid-js';
 import Home from './components/Home';
-import Verisons from './components/Verisons';
+import Versions from './components/Versions';
 import Clients from './components/Clients';
 
 const Launcher: Component = () => {
@@ -67,7 +67,7 @@ const Launcher: Component = () => {
             <Home />
           </Match>
           <Match when={pageIndex() == 1}>
-            <Verisons/>
+            <Versions/>
           </Match>
           <Match when={pageIndex() == 2}>
             <Clients/>
