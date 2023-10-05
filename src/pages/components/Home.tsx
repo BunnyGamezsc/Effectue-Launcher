@@ -47,9 +47,9 @@ const Home: Component = () => {
 
   return (
     <>
-    <div class="launcher" style="animation: opacityFade 0.5s forwards;">
+    <div class="launcher" style="animation: opacityFade 0.5s forwards;height: 94vh;">
           <div class="play">
-            <div class="banner banner2" style="display: flex;     width: 89.7vw; justify-content: center; align-items: end;">
+            <div class="banner banner2" style="display: flex; height: 93.9vh ;   width: 89.7vw; justify-content: center; align-items: end;">
               <div style="margin-bottom: auto;    display: flex;
     /* gap: 2rem; */
     /* flex-direction: row; */
@@ -130,7 +130,7 @@ const Home: Component = () => {
 
             </div>
           </div>
-          <div style="color: white;display: flex;">
+          {/* <div style="color: white;display: flex;">
             <div style="width: var(--launcherWidth);">
               <div style="
     display: flex;
@@ -139,11 +139,11 @@ align-items: center;">
     float: left; font-size: 25px; padding-top: 10px;
 ">LATEST NEWS</h1>
                 <h6 style="
-    /* float: right; */
+    /* float: right;
     margin-left: auto;
 ">View all News</h6>
               </div>
-              <div id="news-container" class="news-container" onscroll={scrollListener}>
+              {/* <div id="news-container" class="news-container" onscroll={scrollListener}>
 
                 <div class="news-item"></div>
                 <div class="news-item"></div>
@@ -159,10 +159,10 @@ align-items: center;">
                 <div class="news-item"></div>
                 <div class="news-item"></div>
 
-              </div>
+              </div>}
             </div>
 
-          </div>
+          </div> */}
         </div>
         </>
   );
