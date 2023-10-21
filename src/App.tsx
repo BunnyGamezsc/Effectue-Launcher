@@ -50,10 +50,10 @@ onMount(async () => {
     <div>
       <div id="app">
       
-      <Show when={hideSplash2() == false}>
+      <Show when={!hideSplash2()}>
         <Splash/>
       </Show>
-      <Show when={hideSplash() == true}>
+      <Show when={hideSplash()}>
         {setup() ? <Setup/> : <Launcher/>}
       </Show>
       </div>

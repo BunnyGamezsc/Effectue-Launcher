@@ -24,6 +24,8 @@
   --friendColumn:330px;
   --friendRow:40px;
   --friendHeight:230px;
+  --homeLaunchButtonColor:#803CA9;
+  --launchmodSelector:#275EFE;
 }
 
 html {
@@ -191,21 +193,23 @@ body {
 }
 
 #launch {
-  background: linear-gradient(#4ae26f, #42be74);
-  border: 3px;
-  border-color: #76e48e;
-  margin: 22px;
-  border-style: solid;
-  border-radius: 10px;
-  text-align: center;
-  width: 290px;
-  height: 70px;
-  position: absolute;
-  padding: 0.5rem;
-  color: white;
-
-  /* justify-content: center;
-  align-items: center; */
+  background: linear-gradient(#b3ccb8a6, #665ed54d);
+    border: 5px;
+    border-bottom: 0;
+    border-color: #771AD0d4;
+    margin: 22px;
+    border-style: solid;
+    border-radius: 6px;
+    text-align: center;
+    width: 71vw;
+    max-width: 434px;
+    height: 190px;
+    position: absolute;
+    padding: 0.5rem;
+    color: white;
+    margin-bottom: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
 .clientName {
@@ -441,3 +445,280 @@ body {
   }
   
 }
+
+.sidebarTooltip{
+  transition: 1s;
+    background-color: #2c2e32c7;
+    width: 70px;
+    height: 26px;
+    border-radius: 8px;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    text-align: center;
+}
+
+
+
+/*
+  * Custom Buttons
+  *
+*/
+
+/*
+Credits: https://codepen.io/hilwat
+
+*/
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.buttons {
+  // margin-top: 50px;
+  text-align: center;
+  border-radius:30px;
+}
+
+$cyan: var(--homeLaunchButtonColor);
+$dark: #FFFFFF;
+$borderW: 2px;
+
+.blob-btn {
+  $numOfBlobs: 4;
+  
+  z-index: 1;
+  position: relative;
+  padding: 15px 40px;
+  // margin-bottom: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  color: $cyan;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: transparent;
+  border: none;
+  transition: color 0.5s;
+  border-radius:30px;
+  
+  &:before {
+    content: "";
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: $borderW solid $cyan;
+    border-radius:30px;
+  }
+  &:active{
+    scale: 110%;
+   
+  }
+  &:after {
+    content: "";
+    z-index: -2;
+    position: absolute;
+    left: $borderW*1.5;
+    top: $borderW*1.5;
+    width: 100%;
+    height: 100%;
+
+    transition: all 0.3s 0.2s;
+    border-radius:30px;
+  }
+  
+  &:hover {
+    color: $dark;
+    border-radius:30px;
+    
+    &:after {
+      transition: all 0.3s;
+      left: 0;
+      top: 0;
+      border-radius:30px;
+    }
+  }
+  
+  &__inner {
+    z-index: -1;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius:30px;
+    background:#ffffff;
+  }
+  
+  // additional container created, because in FF blobs are breaking overflow:hidden of element with svg gooey filter
+  &__blobs {
+    position: relative;
+    display: block;
+    height: 100%;
+    filter: url('#goo');
+  }
+  
+  &__blob {
+    position: absolute;
+    top: $borderW;
+    width: calc(100% / $numOfBlobs);
+    height: 100%;
+    background: $cyan;
+    border-radius: 100%;
+    transform: translate3d(0,150%,0) scale(1.7);
+    transition: transform 0.45s;
+    
+    @supports(filter: url('#goo')) {
+      transform: translate3d(0,150%,0) scale(1.4);
+    }
+    
+    @for $i from 1 through $numOfBlobs {
+      &:nth-child(#{$i}) {
+        left: ($i - 1) * (120% / $numOfBlobs);
+        transition-delay: ($i - 1) * 0.08s;
+      }
+    }
+    
+    .blob-btn:hover & {
+      transform: translateZ(0) scale(1.7);
+      
+      @supports(filter: url('#goo')) {
+        transform: translateZ(0) scale(1.4);
+      }
+    }
+  }
+  transition: scale 200ms;
+  appearance: none;
+}
+
+// Custom Check box
+
+
+
+  @supports (-webkit-appearance: none) or (-moz-appearance: none) {
+
+    .checkbox-wrapper-14 input[type=checkbox] {
+      
+      --active: var(--launchmodSelector);
+      --active-inner: #fff;
+      --focus: 2px rgba(39, 94, 254, .3);
+      --border: #BBC1E1;
+      --border-hover: #275EFE;
+      --background: #fff;
+      --disabled: #F6F8FF;
+      --disabled-inner: #E1E6F9;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      height: 21px;
+      outline: none;
+      display: inline-block;
+      vertical-align: top;
+      position: relative;
+      margin: 0;
+      cursor: pointer;
+      border: 1px solid var(--bc, var(--border));
+      background: var(--b, var(--background));
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
+    }
+    .checkbox-wrapper-14 input[type=checkbox]:after {
+      content: "";
+      display: block;
+      left: 0;
+      top: 0;
+      position: absolute;
+      transition: transform var(--d-t, 0.3s) var(--d-t-e, ease), opacity var(--d-o, 0.2s);
+    }
+    .checkbox-wrapper-14 input[type=checkbox]:checked {
+      --b: var(--active);
+      --bc: var(--active);
+      --d-o: .3s;
+      --d-t: .6s;
+      --d-t-e: cubic-bezier(.2, .85, .32, 1.2);
+    }
+    .checkbox-wrapper-14 input[type=checkbox]:disabled {
+      --b: var(--disabled);
+      cursor: not-allowed;
+      opacity: 0.9;
+    }
+    .checkbox-wrapper-14 input[type=checkbox]:disabled:checked {
+      --b: var(--disabled-inner);
+      --bc: var(--border);
+    }
+    .checkbox-wrapper-14 input[type=checkbox]:disabled + label {
+      cursor: not-allowed;
+    }
+    .checkbox-wrapper-14 input[type=checkbox]:hover:not(:checked):not(:disabled) {
+      --bc: var(--border-hover);
+    }
+    .checkbox-wrapper-14 input[type=checkbox]:focus {
+      box-shadow: 0 0 0 var(--focus);
+    }
+    .checkbox-wrapper-14 input[type=checkbox]:not(.switch) {
+      width: 21px;
+    }
+    .checkbox-wrapper-14 input[type=checkbox]:not(.switch):after {
+      opacity: var(--o, 0);
+    }
+    .checkbox-wrapper-14 input[type=checkbox]:not(.switch):checked {
+      --o: 1;
+    }
+    .checkbox-wrapper-14 input[type=checkbox] + label {
+      display: inline-block;
+      vertical-align: middle;
+      cursor: pointer;
+      margin-left: 4px;
+    }
+
+    .checkbox-wrapper-14 input[type=checkbox]:not(.switch) {
+      border-radius: 7px;
+    }
+    .checkbox-wrapper-14 input[type=checkbox]:not(.switch):after {
+      width: 5px;
+      height: 9px;
+      border: 2px solid var(--active-inner);
+      border-top: 0;
+      border-left: 0;
+      left: 7px;
+      top: 4px;
+      transform: rotate(var(--r, 20deg));
+    }
+    .checkbox-wrapper-14 input[type=checkbox]:not(.switch):checked {
+      --r: 43deg;
+    }
+    .checkbox-wrapper-14 input[type=checkbox].switch {
+      width: 38px;
+      border-radius: 11px;
+      height:23px;
+    }
+    .checkbox-wrapper-14 input[type=checkbox].switch:after {
+      left: 2px;
+      top: 2px;
+      border-radius: 50%;
+      width: 17px;
+      height: 17px;
+      background: var(--ab, var(--border));
+      transform: translateX(var(--x, 0));
+    }
+    .checkbox-wrapper-14 input[type=checkbox].switch:checked {
+      --ab: var(--active-inner);
+      --x: 17px;
+    }
+    .checkbox-wrapper-14 input[type=checkbox].switch:disabled:not(:checked):after {
+      opacity: 0.6;
+    }
+  }
+
+  .checkbox-wrapper-14 * {
+    box-sizing: inherit;
+  }
+  .checkbox-wrapper-14 *:before,
+  .checkbox-wrapper-14 *:after {
+    box-sizing: inherit;
+  }
+
