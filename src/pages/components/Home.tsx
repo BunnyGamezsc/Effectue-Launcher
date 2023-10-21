@@ -1,6 +1,6 @@
 
 import { Component, createEffect, createSignal, onMount } from "solid-js";
-
+import createPropsState from '../../utils.ts'
 import mailImg from "../../assets/Launcher/Mail.png"
 import notifImg from "../../assets/Launcher/notif.png"
 
@@ -15,23 +15,42 @@ import plusImg from "../../assets/Launcher/plus.png"
 import controllerImg from "../../assets/Launcher/sidebar/controller.png"
 import puzzleImg from "../../assets/Launcher/sidebar/puzzle.png"
 import { Popover } from "solid-bootstrap";
-import{launch}
+
 interface HomeProps {
   version: string,
+  launchDetails: any
 }
 
 const Home: Component<HomeProps> = (props: HomeProps) => {
-const [clientName, setClient] = createSignal({name: 'Effectue', themeColor: '#771AD0'})
+  const [clientName, setClient] = createSignal({name: 'Effectue', themeColor: '#771AD0'})
+  const [launchDet, setLaunchDet] = createPropsState(props.launchDetails)
+
+
   createEffect(()=>{
     document.querySelector(':root')!.style.setProperty('--homeLaunchButtonColor', clientName().themeColor);
     document.querySelector(':root')!.style.setProperty('--launchmodSelector', clientName().themeColor);
     
   })
+  onMount(()=>{
+    document.getElementById('UseClientMods').checked = launchDet().useEffectueMods
+    // console.log(launchDet().useEffectueMods)
+    document.getElementById('UseExistingMods').checked = launchDet().useExistingMods
+    // console.log(launchDet().useExistingMods)
+  })
+
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const handleChange = (event: unknown) => {
-    props.launchDetails.useEffectueMods = event.currentTarget.checked;
-    console.log(props.launchDetails.useEffectueMods)  
+  const checkboxClientChange = (event: unknown) => {
+    let launchDetTemp = launchDet()
+    launchDetTemp.useEffectueMods = event.currentTarget.checked;
+    setLaunchDet(launchDetTemp)
+    // console.log(launchDet().useEffectueMods)  
+  };
+  const checkboxExistingChange = (event: unknown) => {
+    let launchDetTemp = launchDet()
+    launchDetTemp.useExistingMods = event.currentTarget.checked;
+    setLaunchDet(launchDetTemp)
+    // console.log(launchDet().useExistingMods)
   };
 
   return (
@@ -115,11 +134,11 @@ const [clientName, setClient] = createSignal({name: 'Effectue', themeColor: '#77
                 {/* other stuff in the play area */}
                 <div style="display:flex;gap:7.1vw">
                 <div class="checkbox-wrapper-14" style="display: flex; align-items: center; width:170px; padding:0.3rem">
-                  <input onChange={checkboxChange("client")} id="UseClientMods" type="checkbox" class="switch"/>
+                  <input onChange={checkboxClientChange} id="UseClientMods" type="checkbox" class="switch"/>
                   <label  for="UseClientMods">Use {clientName().name} Mods</label>
                 </div>
                 <div class="checkbox-wrapper-14" style="display: flex; align-items: center; width:170px; padding:0.3rem">
-                  <input onChange={checkboxChange("existing")} id="UseExistingMods" type="checkbox" class="switch"/>
+                  <input onChange={checkboxExistingChange} id="UseExistingMods" type="checkbox" class="switch"/>
                   <label for="UseExistingMods">Use Existing Mods</label>
                 </div>
                 </div>

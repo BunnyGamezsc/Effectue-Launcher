@@ -18,7 +18,7 @@ import { OverlayTrigger, Popover } from 'solid-bootstrap';
 const Launcher: Component = () => {
   const [pageIndex, setPageIndex] = createSignal(0);
   const [getVersion, setVersion] = createSignal("1.20")
-  const [launchDetails, setLaunchDetails]
+  const [launchDet, setLaunchDet] = createSignal({useEffectueMods: true, useExistingMods: false})
 
   // const computePage = () => {
   //   if (pageIndex() == 0){
@@ -148,7 +148,7 @@ const Launcher: Component = () => {
         <div style="transition:1s;">
         <Switch fallback={<div style="position: relative;top: -20rem;left: 38vw;padding-top: 90vh;" id="loadingDIV"><h1>Loading...</h1></div>}>
         <Match when={pageIndex() == 0}>
-            <Home version={getVersion()} launchDetails={launchDetails}/>
+            <Home version={getVersion()} launchDetails={[launchDet, setLaunchDet]}/>
           </Match>
           <Match when={pageIndex() == 1}>
             <Versions/>
