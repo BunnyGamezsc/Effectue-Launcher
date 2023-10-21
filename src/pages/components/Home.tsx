@@ -15,9 +15,9 @@ import plusImg from "../../assets/Launcher/plus.png"
 import controllerImg from "../../assets/Launcher/sidebar/controller.png"
 import puzzleImg from "../../assets/Launcher/sidebar/puzzle.png"
 import { Popover } from "solid-bootstrap";
+import{launch}
 interface HomeProps {
   version: string,
-  launchDetails: {useEffectueMods: boolean, useExistingMods: boolean}
 }
 
 const Home: Component<HomeProps> = (props: HomeProps) => {
