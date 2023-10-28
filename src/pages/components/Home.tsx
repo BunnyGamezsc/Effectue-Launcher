@@ -33,8 +33,19 @@ const Home: Component<HomeProps> = (props: HomeProps) => {
   })
   onMount(()=>{
     document.getElementById('UseClientMods').checked = launchDet().useEffectueMods
+    if (launchDet().allowEffectueMods == true){
+      document.getElementById('UseClientMods').disabled = false
+    }else if (launchDet().allowEffectueMods == false){
+      document.getElementById('UseClientMods').disabled = true
+    }
+    
     // console.log(launchDet().useEffectueMods)
     document.getElementById('UseExistingMods').checked = launchDet().useExistingMods
+    if (launchDet().allowExistingMods == true){
+      document.getElementById('UseClientMods').disabled = false
+    }else if (launchDet().allowExistingMods == false){
+      document.getElementById('UseClientMods').disabled = true
+    }
     // console.log(launchDet().useExistingMods)
   })
 
