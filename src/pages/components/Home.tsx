@@ -18,7 +18,7 @@ import { Popover } from "solid-bootstrap";
 
 interface HomeProps {
   version: string,
-  launchDetails: any
+  launchDetails: unknown
 }
 
 const Home: Component<HomeProps> = (props: HomeProps) => {
@@ -32,19 +32,20 @@ const Home: Component<HomeProps> = (props: HomeProps) => {
     
   })
   onMount(()=>{
-    document.getElementById('UseClientMods').checked = launchDet().useEffectueMods
+
+    document.getElementById('UseClientMods')!.checked = launchDet().useEffectueMods
     if (launchDet().allowEffectueMods == true){
-      document.getElementById('UseClientMods').disabled = false
+      document.getElementById('UseClientMods')!.disabled = false
     }else if (launchDet().allowEffectueMods == false){
-      document.getElementById('UseClientMods').disabled = true
+      document.getElementById('UseClientMods')!.disabled = true
     }
     
     // console.log(launchDet().useEffectueMods)
-    document.getElementById('UseExistingMods').checked = launchDet().useExistingMods
+    document.getElementById('UseExistingMods')!.checked = launchDet().useExistingMods
     if (launchDet().allowExistingMods == true){
-      document.getElementById('UseClientMods').disabled = false
+      document.getElementById('UseExistingMods')!.disabled = false
     }else if (launchDet().allowExistingMods == false){
-      document.getElementById('UseClientMods').disabled = true
+      document.getElementById('UseExistingMods')!.disabled = true
     }
     // console.log(launchDet().useExistingMods)
   })
@@ -52,13 +53,13 @@ const Home: Component<HomeProps> = (props: HomeProps) => {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const checkboxClientChange = (event: unknown) => {
-    let launchDetTemp = launchDet()
+    const launchDetTemp = launchDet()
     launchDetTemp.useEffectueMods = event.currentTarget.checked;
     setLaunchDet(launchDetTemp)
     // console.log(launchDet().useEffectueMods)  
   };
   const checkboxExistingChange = (event: unknown) => {
-    let launchDetTemp = launchDet()
+    const launchDetTemp = launchDet()
     launchDetTemp.useExistingMods = event.currentTarget.checked;
     setLaunchDet(launchDetTemp)
     // console.log(launchDet().useExistingMods)

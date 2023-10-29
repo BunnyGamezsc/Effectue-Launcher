@@ -108,8 +108,10 @@ const selectVersion = (el: Element, value) => {
         let cool = mainVersions[0]
         setselectedVersion(cool)
 
-        
-        const versionBannerFiles = ["1.20","1.19","1.18","1.17","1.16","1.15","1.9"]
+        // 
+        //  CHANGE WHICH VERSIONS WHICH HAVE BANNERS
+        //
+        const versionBannerFiles = ["1.20","1.19","1.18","1.17","1.16","1.15","1.14","1.13","1.12","1.11","1.9","1.6"]
         let unsetBannerFiles: string | string[] = []
         mainversion().forEach((version) => {
           unsetBannerFiles.push(version.id)

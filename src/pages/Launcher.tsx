@@ -18,7 +18,7 @@ import { OverlayTrigger, Popover } from 'solid-bootstrap';
 const Launcher: Component = () => {
   const [pageIndex, setPageIndex] = createSignal(0);
   const [getVersion, setVersion] = createSignal("1.20")
-  const [launchDet, setLaunchDet] = createSignal({useEffectueMods: true, allowEffectueMods:true, useExistingMods: false, allowExistingMods: false})
+  const [launchDet, setLaunchDet] = createSignal({useEffectueMods: true, allowEffectueMods:true, useExistingMods: false, allowExistingMods: true})
 
   // const computePage = () => {
   //   if (pageIndex() == 0){

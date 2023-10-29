@@ -10,6 +10,7 @@ function App() {
   const [setup, setSetupState] = createSignal(false);
   const [hideSplash, setSplashData] = createSignal(false);
   const [hideSplash2, setSplash] = createSignal(false);
+
   // useEffect(() => {
   //   if (sampleData.length === 0) {
   //     const toRef = setTimeout(() => {
