@@ -63,7 +63,7 @@ Step 1: Option 1
   cd Effectue-Solid
 
   # Install Dependencies
-  npm install
+  npm install --include=dev
 ```
 Step 1: Option 2
 ```
@@ -74,7 +74,7 @@ Step 1: Option 2
   cd /path/to/download/folder/Effectue-Solid
 
   # Install Dependencies
-  npm install
+  npm install --include=dev
 ```
 
 Step 2.5 (optional): Open with VSCode
