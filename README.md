@@ -1,6 +1,7 @@
 # Effectue Launcher - Effective Performace
 _**MAIN Section:** This Branch has feature updates (debugged hopefully) that is a release or not in development at the moment_
-Go to DEV to see up to date / real-time changes
+<br>
+Go to DEV branch to see up to date / real-time changes
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-green?&style=for-the-badge)](https://opensource.org/licenses/Apache-2.0)
 [![Version](https://img.shields.io/badge/version-alpha%200.0.1-blue?&style=for-the-badge)](https://github.com/BunnyGamezsc/Effectue-Solid/releases)
