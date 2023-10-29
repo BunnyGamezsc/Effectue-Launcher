@@ -52,6 +52,8 @@ Effectue was created to provide a customizable and fast Minecraft Experience wit
 [Git](https://git-scm.com/downloads)
 <br>
 [NodeJS (npm)](https://nodejs.org/en/download)
+<br>
+[Rust & Cargo](https://www.rust-lang.org/tools/install)
 
 ### Download
 
