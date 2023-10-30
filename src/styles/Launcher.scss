@@ -287,9 +287,19 @@ body {
   background-color: #27282c;
   border-radius: 10px;
   border-style: solid;
-  margin: 1px;
+  cursor: pointer;
+  margin: 2px;
   border-width: 4px;
   border-color: #1a1a1a;
+  &:hover{
+    border-color: #252543;
+    border-width: 5px;
+    scale: 101%;
+  }
+  &:active{
+    border-color: #5c3a93;
+    border-width: 5px;
+  }
 }
 
 .friend-container {
@@ -420,7 +430,7 @@ body {
 }
 
 .versgrad{
-  background: linear-gradient(to right, #4a447b, #59558e, #5b5b75);
+  background: linear-gradient(to right, #4a447bcf, #59558ec9, #5b5b75c2);
 }
 
 .version-hover{

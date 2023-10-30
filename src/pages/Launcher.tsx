@@ -19,7 +19,7 @@ const Launcher: Component = () => {
   const [pageIndex, setPageIndex] = createSignal(0);
   const [getVersion, setVersion] = createSignal("1.20")
   const [launchDet, setLaunchDet] = createSignal({useEffectueMods: true, allowEffectueMods:true, useExistingMods: false, allowExistingMods: true})
-
+  const [selectedVersion, setselectedVersion] = createSignal({"id": "1.20", "type": "release", "url": "", "time": "", "releaseTime": ""})
   // const computePage = () => {
   //   if (pageIndex() == 0){
   //     return <Home/>
@@ -151,7 +151,7 @@ const Launcher: Component = () => {
             <Home version={getVersion()} launchDetails={[launchDet, setLaunchDet]}/>
           </Match>
           <Match when={pageIndex() == 1}>
-            <Versions/>
+            <Versions selectedVersion={[selectedVersion, setselectedVersion]}/>
           </Match>
           <Match when={pageIndex() == 2}>
             <Clients/>

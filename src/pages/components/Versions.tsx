@@ -1,9 +1,10 @@
 import { invoke } from "@tauri-apps/api";
-import { Component, For, createSignal, onMount } from "solid-js";
+import { Component, For, createEffect, createSignal, onMount } from "solid-js";
 import { renderToString } from "solid-js/web";
 import isOnline from 'is-online';
+import createPropsState from "../../utils";
 
-const Versions: Component = () => {
+const Versions: Component = (props) => {
   // get the current minecraft version
   //     20
   // get the next version x3
@@ -13,7 +14,7 @@ const Versions: Component = () => {
   }
   let newsElem: HTMLDivElement | undefined;
   const [version, setVersion] = createSignal([20])
-  const [selectedVersion, setselectedVersion] = createSignal({"id": "1.20", "type": "release", "url": "", "time": "", "releaseTime": ""})
+  const [selectedVersion, setselectedVersion] = createPropsState(props.selectedVersion)
   const [mainversion, setmainVersion] = createSignal([
     {
         "id": "1.20",
@@ -27,13 +28,17 @@ const Versions: Component = () => {
 const selectVersion = (el: Element, value) => {
   el.addEventListener("click",()=>{
     setselectedVersion(value);
-    console.log(selectedVersion())
+    // console.log(selectedVersion())
     for (const child of el.parentElement!.children){
       child.setAttribute("version-selected", "false")
     }
     el.setAttribute("version-selected", "true")
   })
 }
+createEffect(()=>{
+  console.log(selectedVersion().id);
+
+})
   onMount(()=>{
    console.log(selectedVersion()) 
     setmainVersion([])
@@ -63,8 +68,8 @@ const selectVersion = (el: Element, value) => {
     })
     .then((data) =>{
         // const data = r.json();
-        console.log(data)
-        console.log("[Server] " + data)
+        // console.log(data)
+        // console.log("[Server] " + data)
         if (typeof data == "undefined"){
           console.log("error: " + "")
         return
@@ -72,8 +77,8 @@ const selectVersion = (el: Element, value) => {
         const dataa = data
         const latest = dataa.latest.release
         const versions = dataa.versions.filter((versionBlock)=>{
-          console.log(versionBlock.id)
-          console.log(Number(versionBlock.id))
+          // console.log(versionBlock.id)
+          // console.log(Number(versionBlock.id))
           if (versionBlock.id == "1.2.1"){
             const ver = versionBlock
             ver.id = "1.2"
@@ -95,24 +100,24 @@ const selectVersion = (el: Element, value) => {
           }
         })
         
-        console.log(latest)
+        // console.log(latest)
         
-        console.warn(versions)
+        // console.warn(versions)
         // console.log(mainVersions)
         // let g = mainVersions
         // g.push({"id": "0.1", "type": "release", "url": "", "time": "", "releaseTime": ""})
         // setmainVersion(g)
         // console.error(mainversion())
         setmainVersion(mainVersions)
-        console.log(mainversion())
-        let cool = mainVersions[0]
-        setselectedVersion(cool)
+        // console.log(mainversion())
+        let firstVersion = mainVersions[0]
+        setselectedVersion(firstVersion)
 
         // 
         //  CHANGE WHICH VERSIONS WHICH HAVE BANNERS
         //
         const versionBannerFiles = ["1.20","1.19","1.18","1.17","1.16","1.15","1.14","1.13","1.12","1.11","1.9","1.6"]
-        let unsetBannerFiles: string | string[] = []
+        let unsetBannerFiles: string[] = []
         mainversion().forEach((version) => {
           unsetBannerFiles.push(version.id)
         })
@@ -145,17 +150,18 @@ const selectVersion = (el: Element, value) => {
     for (let i = 0; i < Math.round((arg0.length/3 + 0.49999999)); i++) {
       rowsarr.push("var(--newsRow)")
     }
-    console.log(rowsarr.length)
+    // console.log(rowsarr.length)
     return rowsarr.join(" ")
   }
 
   return (
   <div class="launcher" style="animation: opacityFade 0.5s forwards;">
-    <div class="play" style="height: 33vh;">
+    <div class="play" style="height: 33.6vh;background-color:transparent;">
         <div class="banner versgrad" style="display:flex;width:89.7vw;justify-content:center;align-items:center;">
-            <div style="margin-bottom:auto;display:flex;/* gap:2rem; */ flex-direction:row;justify-content:center;">
-            <div style="border-style: solid;width: 58.5vw;margin: 0.1rem;border-color: burlywood;height: 31.5vh;">
-                  
+            <div style="margin-bottom:auto;margin-top: 0.5vh;display:flex;/* gap:2rem; */ flex-direction:row;justify-content:center;">
+            <div style={`border-style: solid;width: 58.5vw;margin: 0.1rem;border-color: burlywood;height: 31.5vh;background-image:url(/versionBanner/${selectedVersion().id}.jpg);background-size: 24rem;
+    background-position: cover;`}>
+                  {selectedVersion().id}
                   </div>
               <div style="border-style: solid;width: 30vw;margin: 0.1rem;border-color: burlywood;height: 31.5vh;">
                   
