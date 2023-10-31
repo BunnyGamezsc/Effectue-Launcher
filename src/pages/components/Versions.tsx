@@ -13,6 +13,7 @@ const Versions: Component = (props) => {
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
   let newsElem: HTMLDivElement | undefined;
+  const versionBannerFiles = ["1.20","1.19","1.18","1.17","1.16","1.15","1.14","1.13","1.12","1.11","1.9","1.6"]
   const [version, setVersion] = createSignal([20])
   const [selectedVersion, setselectedVersion] = createPropsState(props.selectedVersion)
   const [mainversion, setmainVersion] = createSignal([
@@ -116,7 +117,6 @@ createEffect(()=>{
         // 
         //  CHANGE WHICH VERSIONS WHICH HAVE BANNERS
         //
-        const versionBannerFiles = ["1.20","1.19","1.18","1.17","1.16","1.15","1.14","1.13","1.12","1.11","1.9","1.6"]
         let unsetBannerFiles: string[] = []
         mainversion().forEach((version) => {
           unsetBannerFiles.push(version.id)
@@ -159,11 +159,10 @@ createEffect(()=>{
     <div class="play" style="height: 33.6vh;background-color:transparent;">
         <div class="banner versgrad" style="display:flex;width:89.7vw;justify-content:center;align-items:center;">
             <div style="margin-bottom:auto;margin-top: 0.5vh;display:flex;/* gap:2rem; */ flex-direction:row;justify-content:center;">
-            <div style={`border-style: solid;width: 58.5vw;margin: 0.1rem;border-color: burlywood;height: 31.5vh;background-image:url(/versionBanner/${selectedVersion().id}.jpg);background-size: 24rem;
-    background-position: cover;`}>
-                  {selectedVersion().id}
+            <div style={`border-style: solid;width: 58.5vw;margin: 0.1rem;border-color: burlywood;height: 31.5vh;background-image:url(/versionBanner/${ this.trybannerurl}.jpg);background-size: 24rem;background-size: cover;background-position: center;`}>
+                  <h1 style="padding: 1rem;background-color: #c4dfffe0;margin: 2vh 5.5vw 1vh 5.5vw;display: block;border-radius:8px;">{selectedVersion().id}</h1>
                   </div>
-              <div style="border-style: solid;width: 30vw;margin: 0.1rem;border-color: burlywood;height: 31.5vh;">
+              <div style="border-style: solid;width: 30vw;margin: 0.1 rem;border-color: burlywood;height: 31.5vh;">
                   
               </div>
             </div>
