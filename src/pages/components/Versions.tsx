@@ -28,7 +28,7 @@ const Versions: Component = (props) => {
   const [mainBannerBackground, setMainBannerBackground] = createSignal("")
   const [selectedMainVersion, setselectedMainVersion] = createSignal({"id": "1.20", "type": "release", "url": "", "time": "", "releaseTime": ""})
   const [selectedVersion, setselectedVersion] = createPropsState(props.selectedVersion)
-  const [launchingText, setLaunchingText] = createPropsState(props.launchingText)
+  // const [launchingText, setLaunchingText] = createPropsState(props.launchingText)
   console.log(selectedVersion())
   
   const [mainversion, setmainVersion] = createSignal([
@@ -294,7 +294,7 @@ createEffect(()=>{
     <div style="position: relative;top: -20vh;display:flex;justify-content:center">
       <div style="background-color: #f0bdf4f7;width: 42vw;height: 21vh;border-radius: 10px;padding:1rem;display:flex;justify-content:center;flex-direction:column">
       <h1 style="padding:0.7rem">Play {selectedVersion().id}</h1>
-                <button class="blob-btn" style="margin-left:5rem;margin-right:5rem"> <h3>{launchingText()}</h3>
+                <button class="blob-btn" style="margin-left:5rem;margin-right:5rem"> <h3>{"launchingText()"}</h3>
                   <span class="blob-btn__inner">
                     <span class="blob-btn__blobs">
                       <span class="blob-btn__blob"></span>
@@ -304,6 +304,8 @@ createEffect(()=>{
                     </span>
                   </span>
                 </button>
+                <br />
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1"><defs><filter id="goo"><feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur><feColorMatrix in="blur" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7" result="goo"></feColorMatrix><feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend></filter></defs></svg>
 
     </div>
     </div>
