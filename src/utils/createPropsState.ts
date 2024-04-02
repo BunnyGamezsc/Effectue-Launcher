@@ -1,4 +1,7 @@
-const createPropsState = (propsValue: any[]) => {
+function createPropsState(propsValue: any[]){
     return [propsValue[0], propsValue[1]]
 }
+
+
+
 export default createPropsState;

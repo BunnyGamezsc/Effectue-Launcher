@@ -434,7 +434,7 @@ body {
 }
 
 .version-hover{
-  background-size: 24rem;
+  background-size: 65vh;
   background-position: center;
   background-color: red;
   display: flex;
@@ -442,7 +442,7 @@ body {
   justify-content: center;
   transition: 0.2s background-size;
   &:hover{
-    background-size: 25rem;
+    background-size: 67vh;
     h1{
       font-size:3.3rem;
       
@@ -732,3 +732,47 @@ $borderW: 2px;
     box-sizing: inherit;
   }
 
+
+
+  .optionalVersion{
+    background-image: linear-gradient(rgba(103, 103, 103, 0.4), rgba(183, 183, 183, 0.5));
+    background-color: #abf1fe;
+    transition: 0.2s background-size;
+    border-radius: 10px;
+    border-style: solid;
+    cursor: pointer;
+    margin: 2px;
+    padding: 0.5rem;
+    width: 7vw;
+    height: 6vh;
+    border-width: 4px;
+    display: flex;
+    justify-content: center;
+    border-color: #1a1a1a;
+    color: aliceblue;
+    h1{
+      font-size:1rem;
+    }
+  }
+
+  .optionalVersionSelected{
+    background-image: linear-gradient(rgba(103, 103, 103, 0.4), rgba(183, 183, 183, 0.5));
+    transition: 0.2s background-size;
+    border-radius: 10px;
+    border-style: solid;
+    cursor: pointer;
+    margin: 2px;
+    padding: 0.5rem;
+    width: 7vw;
+    height: 6vh;
+    border-width: 4px;
+    display: flex;
+    justify-content: center;
+    border-color: #1a1a1a;
+    h1{
+      font-size:1rem;
+    }
+    background-color: #3bc6e0;
+    color: #d0d0d0;
+    filter: drop-shadow(1px 2px 3px black) brightness(1.2);
+  }

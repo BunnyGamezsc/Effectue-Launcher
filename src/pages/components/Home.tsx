@@ -1,6 +1,6 @@
 
 import { Component, createEffect, createSignal, onMount } from "solid-js";
-import createPropsState from '../../utils.ts'
+import createPropsState from '../../utils/createPropsState'
 import mailImg from "../../assets/Launcher/Mail.png"
 import notifImg from "../../assets/Launcher/notif.png"
 
@@ -22,7 +22,8 @@ interface HomeProps {
 }
 
 const Home: Component<HomeProps> = (props: HomeProps) => {
-  const [clientName, setClient] = createSignal({name: 'Effectue', themeColor: '#771AD0'})
+  console.log(typeof createPropsState)
+  const [clientName, setClient] = createPropsState(props.clientName)
   const [launchDet, setLaunchDet] = createPropsState(props.launchDetails)
 
 
@@ -31,6 +32,9 @@ const Home: Component<HomeProps> = (props: HomeProps) => {
     document.querySelector(':root')!.style.setProperty('--launchmodSelector', clientName().themeColor);
     
   })
+
+
+
   onMount(()=>{
 
     document.getElementById('UseClientMods')!.checked = launchDet().useEffectueMods

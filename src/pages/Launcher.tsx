@@ -8,7 +8,7 @@ import puzzleImg from "../assets/Launcher/sidebar/Versions.png"
 import globeImg from "../assets/Launcher/sidebar/globe.png"
 import newsImg from "../assets/Launcher/sidebar/news.png"
 import gearsImg from "../assets/Launcher/sidebar/gears.png"
-import { Component, Match, Switch, createSignal } from 'solid-js';
+import { Component, Match, Switch, createEffect, createSignal } from 'solid-js';
 import Home from './components/Home';
 import Versions from './components/Versions';
 import Clients from './components/Clients';
@@ -17,9 +17,26 @@ import { OverlayTrigger, Popover } from 'solid-bootstrap';
 
 const Launcher: Component = () => {
   const [pageIndex, setPageIndex] = createSignal(0);
-  const [getVersion, setVersion] = createSignal("1.20")
+  const [versionsDisplayStyle, setVersionsDisplay] = createSignal("display:none");
+  const [clientName, setClient] = createSignal({name: 'Effectue', themeColor: '#771AD0'})
   const [launchDet, setLaunchDet] = createSignal({useEffectueMods: true, allowEffectueMods:true, useExistingMods: false, allowExistingMods: true})
   const [selectedVersion, setselectedVersion] = createSignal({"id": "1.20", "type": "release", "url": "", "time": "", "releaseTime": ""})
+  
+  //CONTINUITY - For different pages to look the same
+  const [launchingText, setLaunchingText] = createSignal("Launch Effectue 1.20")
+  let launching = false 
+  
+  createEffect(()=>{
+   
+    if (launching === false){
+    setLaunchingText(`Launch ${clientName().name} ${selectedVersion().id}`)
+    console.log(launchingText())
+  }
+  
+  })
+  
+  
+  
   // const computePage = () => {
   //   if (pageIndex() == 0){
   //     return <Home/>
@@ -36,6 +53,15 @@ const Launcher: Component = () => {
     })
     
   }
+
+
+  createEffect(()=>{
+    if (pageIndex() == 1){
+      setVersionsDisplay("display: block")
+    }else{
+      setVersionsDisplay("display: none")
+    }
+  })
 
   const checkPageIndex = (page:Number) => {
     if (page == pageIndex()){
@@ -148,15 +174,19 @@ const Launcher: Component = () => {
         <div style="transition:1s;">
         <Switch fallback={<div style="position: relative;top: -20rem;left: 38vw;padding-top: 90vh;" id="loadingDIV"><h1>Loading...</h1></div>}>
         <Match when={pageIndex() == 0}>
-            <Home version={getVersion()} launchDetails={[launchDet, setLaunchDet]}/>
+            <Home version={selectedVersion().id} clientName={[clientName,setClient]} launchDetails={[launchDet, setLaunchDet]} launchingText={[launchingText, setLaunchingText]}/>
           </Match>
           <Match when={pageIndex() == 1}>
-            <Versions selectedVersion={[selectedVersion, setselectedVersion]}/>
+            <></>
           </Match>
           <Match when={pageIndex() == 2}>
             <Clients/>
           </Match>
         </Switch>
+        <div style={versionsDisplayStyle()}>
+          <Versions selectedVersion={[selectedVersion, setselectedVersion]}/>
+        </div>
+        
         </div>
       </div>
 
