@@ -117,9 +117,7 @@ const Testing: Component = () => {
                   </h2>
                 </div>
               </div>
-              <div
-                style="height: max-content;overflow: scroll;width: initial;display: grid; grid-template-columns: auto auto auto;"
-              >
+              <div style="height: max-content;overflow: scroll;width: initial;display: grid; grid-template-columns: auto auto auto;">
                 <Index each={modQueryFirstResult().versions}>
                   {(version) => {
                     return <p>{version()}</p>;
@@ -132,7 +130,26 @@ const Testing: Component = () => {
         </div>
         <div>
           <h3>Versions</h3>
-          <div></div>
+          <Index each={modVersionResults()}>
+            {(result) => {
+              return (
+                <div style="padding: 1rem;
+                background-color: antiquewhite;
+                width: 11rem;
+                justify-content: center;
+                display: flex;margin:1rem;flex-direction: column;">
+                  {result().id}
+                  <br />
+                  {result().name}
+                  <br />
+                  <a href={result().files[0].url}>Download</a>
+                  
+
+                  
+                </div>
+              );
+            }}
+          </Index>
         </div>
       </div>
     </>
