@@ -1,6 +1,6 @@
 
 import { Component, createSignal } from 'solid-js';
-import '../styles/Setup.module.scss';
+import '../styles/Setup.scss';
 // type SetupProps = {
 //   banner: string;
 // };
