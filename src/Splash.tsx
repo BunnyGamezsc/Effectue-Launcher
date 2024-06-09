@@ -1,5 +1,20 @@
+
+/**
+ * File Name: Splash.tsx
+ * Author: BunnyGamez
+ * Date: October 1st 2023
+ * 
+ * Description:
+ * This is the main app file!!
+ * 
+ * Copyright (c) 2024 BunnyGamez
+ * 
+ * This file is part of the Effectue project.
+ */
+
+
 import logo from './assets/logo_black.png'
-import splashback from './assets/splashBackground.jpg'
+// import splashback from './assets/splashBackground.jpg'
 import './App.css'
 import { createSignal } from 'solid-js';
 

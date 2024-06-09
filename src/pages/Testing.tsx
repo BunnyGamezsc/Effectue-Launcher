@@ -1,10 +1,20 @@
+/**
+ * File Name: Testing.tsx
+ * Author: BunnyGamez
+ * Created Date: May 23st 2024
+ * 
+ * Description:
+ * This includes any non-production development code
+ * 
+ * Copyright (c) 2024 BunnyGamez
+ * 
+ * This file is part of the Effectue project.
+ */
+
 import {
   Component,
   Index,
-  createEffect,
-  createResource,
   createSignal,
-  onMount,
 } from "solid-js";
 
 const Testing: Component = () => {
@@ -25,7 +35,7 @@ const Testing: Component = () => {
   const [modQueryResults, setModQueryResults] = createSignal([]);
   const [modQueryFirstResult, setModQueryFirstResult] = createSignal({});
   const [modID, setModID] = createSignal("");
-
+  // queryVersions() & queryMods() --> Properly queries mod information and, respective to the version, download information for mod file 
   const queryVersions = () => {
     fetch(
       `https://api.modrinth.com/v2/project/${modID()}/version?game_versions=["${queryVersion()}"]`
@@ -34,7 +44,7 @@ const Testing: Component = () => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         return data;
       })
       .then((versions) => {

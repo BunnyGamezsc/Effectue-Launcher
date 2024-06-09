@@ -1,6 +1,21 @@
+
+/**
+ * File Name: Launcher.tsx
+ * Author: BunnyGamez
+ * Date: October 1st 2023
+ * 
+ * Description:
+ * This is the main launcher component that displays the launcher
+ * 
+ * Copyright (c) 2024 BunnyGamez
+ * 
+ * This file is part of the Effectue project.
+ */
+
+
 import '../styles/Launcher.scss';
 import effectue_faviconImg from "../assets/Launcher/effectue_favicon.svg"
-import plusImg from "../assets/Launcher/plus.png"
+//import plusImg from "../assets/Launcher/plus.png"
 
 import controllerImg from "../assets/Launcher/sidebar/game.png"
 import puzzleImg from "../assets/Launcher/sidebar/Versions.png"
@@ -22,7 +37,7 @@ const Launcher: Component = () => {
   const [launchDet, setLaunchDet] = createSignal({useEffectueMods: true, allowEffectueMods:true, useExistingMods: false, allowExistingMods: true})
   const [selectedVersion, setselectedVersion] = createSignal({"id": "1.20", "type": "release", "url": "", "time": "", "releaseTime": ""})
   
-  //CONTINUITY - For different pages to look the same
+  // CONTINUITY - For different pages to look the same
   const [launchingText, setLaunchingText] = createSignal("Launch Effectue 1.20")
   let launching = false 
   
@@ -30,7 +45,7 @@ const Launcher: Component = () => {
    
     if (launching === false){
     setLaunchingText(`Launch ${clientName().name} ${selectedVersion().id}`)
-    console.log(launchingText())
+    // console.log(launchingText())
   }
   
   })
@@ -184,23 +199,16 @@ const Launcher: Component = () => {
           </Match>
         </Switch>
         <div style={versionsDisplayStyle()}>
-          <Versions selectedVersion={[selectedVersion, setselectedVersion]}/>
+          <Versions selectedVersion={[selectedVersion, setselectedVersion]} launchingText={[launchingText, setLaunchingText]}/>
         </div>
         
         </div>
       </div>
-
-      
-    {/* </div> */}
-
-  {/* </center> */}
     
     
     
     </>
   )
 }
-
-// Launcher.propTypes = {}
 
 export default Launcher

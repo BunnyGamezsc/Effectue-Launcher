@@ -1,3 +1,16 @@
+/**
+ * File Name: App.tsx
+ * Author: BunnyGamez
+ * Created Date: May 23rd 2024
+ * 
+ * Description:
+ * This is the main app file!!
+ * 
+ * Copyright (c) 2024 BunnyGamez
+ * 
+ * This file is part of the Effectue project.
+ */
+
 import "./App.css";
 import Splash from "./Splash";
 import Setup from "./pages/Setup";
@@ -8,10 +21,16 @@ import { appDataDir } from "@tauri-apps/api/path";
 import Testing from "./pages/Testing";
 
 function App() {
+
+
+
+
+  
   const [setup, setSetupState] = createSignal(false);
   const [hideSplash, setSplashData] = createSignal(false);
   const [hideSplash2, setSplash] = createSignal(false);
-  let testing = 1;
+  // eslint-disable-next-line prefer-const
+  let testing = 0;
   // useEffect(() => {
   //   if (sampleData.length === 0) {
   //     const toRef = setTimeout(() => {
@@ -27,6 +46,17 @@ function App() {
   //
   //   }
   // }, [showComponent]);
+
+
+  /*
+  Startup:
+  -  Gets setup information for first time opening the launcher / not authenticated yet
+  -  Starts the Splash Screen Animation 
+  -  **DEV ONLY** If testing mode it changes the component to testing screen instead of Launcher Home Page
+  
+
+  */
+
   onMount(async () => {
     invoke("get_setup_state")
       .then((rs_setupState) => {

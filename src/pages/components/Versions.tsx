@@ -1,16 +1,29 @@
-import { invoke } from "@tauri-apps/api";
+/**
+ * File Name: Versions.tsx
+ * Author: BunnyGamez
+ * Created Date: May 23rd 2024
+ * 
+ * Description:
+ * This outlines the version selector (v1 ofc) for choosing a version to launch
+ * 
+ * Copyright (c) 2024 BunnyGamez
+ * 
+ * This file is part of the Effectue project.
+ */
+
+// import { invoke } from "@tauri-apps/api";
 import { Component, For, createEffect, createSignal, onMount } from "solid-js";
-import { renderToString } from "solid-js/web";
+// import { renderToString } from "solid-js/web";
 import isOnline from 'is-online';
 import createPropsState from "../../utils/createPropsState";
-import waitForElementId from "../../utils/waitforElement";
+// import waitForElementId from "../../utils/waitforElement";
 
 const Versions: Component = (props) => {
   // get the current minecraft version
   //     20
   // get the next version x3
   //     19,18,17
-  function randomIntFromInterval(min, max) { // min and max included 
+  function randomIntFromInterval(min: number, max: number) { // min and max included 
     return Math.floor(Math.random() * (max - min + 1) + min)
   }
   let newsElem: HTMLDivElement | undefined;
@@ -25,10 +38,10 @@ const Versions: Component = (props) => {
         "releaseTime": "0"
     }
 ])
-  const [mainBannerBackground, setMainBannerBackground] = createSignal("")
+  // const [mainBannerBackground, setMainBannerBackground] = createSignal("")
   const [selectedMainVersion, setselectedMainVersion] = createSignal({"id": "1.20", "type": "release", "url": "", "time": "", "releaseTime": ""})
   const [selectedVersion, setselectedVersion] = createPropsState(props.selectedVersion)
-  // const [launchingText, setLaunchingText] = createPropsState(props.launchingText)
+  const [launchingText, setLaunchingText] = createPropsState(props.launchingText)
   console.log(selectedVersion())
   
   const [mainversion, setmainVersion] = createSignal([
@@ -50,7 +63,7 @@ const [selectedVersions, setAllSelectedVersions] = createSignal([
   }
 ]);
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const selectMainVersion = (el: Element, value) => {
+const selectMainVersion = (el: Element, value: {id: string, type: string, url: string, time: string, releaseTime: string}) => {
   el.addEventListener("click",()=>{
 
     setselectedMainVersion(value);
@@ -62,7 +75,8 @@ const selectMainVersion = (el: Element, value) => {
   })
 }
 
-const selectVersion = (el: Element, value) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const selectVersion = (el: Element, value: {id: string, type: string, url: string, time: string, releaseTime: string}) => {
   el.addEventListener("click",()=>{
     setselectedVersion(value);
     // console.log(selectedVersion())
@@ -75,14 +89,14 @@ const selectVersion = (el: Element, value) => {
 
 
 // ## SELECTED VERSION ACTIONS --->
-createEffect(()=>{
-  console.log(selectedMainVersion().id);
-  console.log("selected Version 👆")
-  console.log(selectedVersions())
+// createEffect(()=>{
+//   console.log(selectedMainVersion().id);
+//   console.log("selected Version 👆")
+//   console.log(selectedVersions())
   
-  //console.log(allVersions())
+//   //console.log(allVersions())
 
-})
+// })
 
 createEffect(()=>{
   setAllSelectedVersions(allVersions().filter(
@@ -105,7 +119,7 @@ createEffect(()=>{
 })
 
   onMount(()=>{
-   console.log(selectedMainVersion()) 
+  //  console.log(selectedMainVersion()) 
     setmainVersion([])
     const temp_version = version()
     for (let index = 0; index < version()[0]; index!++){
@@ -113,13 +127,14 @@ createEffect(()=>{
       temp_version.push(version()[0] - ii)
     }
     temp_version.pop()
-    let displayVersions = temp_version
+    // const displayVersions = temp_version
 
     
     fetch('https://piston-meta.mojang.com/mc/game/version_manifest.json')
     .then(async response => {
         const json = response.json()
         const isJson = response.headers.get('content-type')?.includes('application/json');
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const data = isJson ? json : null;
 
         // check for error response
@@ -141,8 +156,8 @@ createEffect(()=>{
         }
         const dataa = data
         
-        const latest = dataa.latest.release
-        const versions = dataa.versions.filter((versionBlock)=>{
+        // const latest = dataa.latest.release
+        const versions = dataa.versions.filter((versionBlock: { id: string; type: string; })=>{
           // console.log(versionBlock.id)
           // console.log(Number(versionBlock.id))
           if (versionBlock.id == "1.2.1"){
@@ -211,6 +226,7 @@ createEffect(()=>{
     });
     
   })
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async function checkSelectedVersion(){
     let bannerExists = false;
     for (const bannerNum of versionBannerFiles){
@@ -218,9 +234,9 @@ createEffect(()=>{
           bannerExists = true;
         }
     }
-    console.log("versionbanner-" + selectedMainVersion().id)
-      let selectedVersionBannerElem = document.getElementById("versionbanner-" + selectedMainVersion().id)?.style.backgroundImage
-      console.log(selectedVersionBannerElem)
+    // console.log("versionbanner-" + selectedMainVersion().id)
+      const selectedVersionBannerElem = document.getElementById("versionbanner-" + selectedMainVersion().id)?.style.backgroundImage
+      // console.log(selectedVersionBannerElem)
       
       return selectedVersionBannerElem
       // waitForElementId("versionbanner-" + selectedVersion().id).then((elm) =>{
@@ -228,16 +244,16 @@ createEffect(()=>{
       //   console.log("versionbanner-" + selectedVersion().id)
       //   // return elm.style.backgroundImage
       // })
-    if (bannerExists){
-      return selectedMainVersion().id
-    }else{
-      console.log("No banner found")
+    // if (bannerExists){
+    //   return selectedMainVersion().id
+    // }else{
+    //   console.log("No banner found")
       
-      return selectedMainVersion().id
-    }
+    //   return selectedMainVersion().id
+    // }
     
  } 
-  function returnRows(arg0: { id: string; type: string; url: string; time: string; releaseTime: string; }[]): import("csstype").Property.GridTemplateRows<0 | (string & {}) > | undefined {
+  function returnRows(arg0: { id: string; type: string; url: string; time: string; releaseTime: string; }[]): import("csstype").Property.GridTemplateRows<0 | (string & object) > | undefined {
     let rowsarr = []
     for (let i = 0; i < Math.round((arg0.length/3 + 0.49999999)); i++) {
       rowsarr.push("var(--newsRow)")
@@ -291,10 +307,10 @@ createEffect(()=>{
                 <div class="news-item"></div> */}
 
               </div>
-    <div style="position: relative;top: -20vh;display:flex;justify-content:center">
+    <div style="margin-left: 22vw;"><div style="position: relative;top: -20vh;display:flex;justify-content:center; width:fit-content">
       <div style="background-color: #f0bdf4f7;width: 42vw;height: 21vh;border-radius: 10px;padding:1rem;display:flex;justify-content:center;flex-direction:column">
       <h1 style="padding:0.7rem">Play {selectedVersion().id}</h1>
-                <button class="blob-btn" style="margin-left:5rem;margin-right:5rem"> <h3>{"launchingText()"}</h3>
+                <button class="blob-btn" style="margin-left:5rem;margin-right:5rem"> <h3>{launchingText()}</h3>
                   <span class="blob-btn__inner">
                     <span class="blob-btn__blobs">
                       <span class="blob-btn__blob"></span>
@@ -308,13 +324,9 @@ createEffect(()=>{
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1"><defs><filter id="goo"><feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10"></feGaussianBlur><feColorMatrix in="blur" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7" result="goo"></feColorMatrix><feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend></filter></defs></svg>
 
     </div>
-    </div>
+    </div></div>
   </div>
   );
 };
 
 export default Versions;
-
-function renderElement() {
-  throw new Error("Function not implemented.");
-}

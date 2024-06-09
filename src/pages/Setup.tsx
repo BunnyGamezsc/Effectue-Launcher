@@ -1,23 +1,25 @@
+/**
+ * File Name: Setup.tsx
+ * Author: BunnyGamez
+ * Created Date: May 23rd 2024
+ * 
+ * Description:
+ * Setup contains the first time initialization for authentication and paths
+ * 
+ * Copyright (c) 2024 BunnyGamez
+ * 
+ * This file is part of the Effectue project.
+ */
 
-import { Component, createSignal } from 'solid-js';
+import { Component } from 'solid-js';
 import '../styles/Setup.scss';
 // type SetupProps = {
 //   banner: string;
 // };
 const Setup: Component = () => {
-    // function chooseBanner(){
-  //   let random = Math.floor(Math.random() * 12);
-  //   if (random >= 0 || random <= 3){
-  //     return {"background-image": "url('../images/banner2.jpg')"}
-  //   }else if (random >= 4 || random <= 7){
-  //     return {"background-image": "url('../images/banner2.jpg')"}
-  //   } else if (random >= 8 || random <= 11){
-  //     return {"background-image": "url('../images/banner2.jpg')"}
-  //   }
 
-  // }
   function chooseBanner(){
-    let random = Math.floor(Math.random() * 12);
+    const random = Math.floor(Math.random() * 12);
     if (random >= 0 && random <= 3){
       return "banner2"
     }
@@ -33,13 +35,6 @@ const Setup: Component = () => {
 
     
   return (<>
-    {/* <div>
-      <h1>Effectue Admin</h1>
-      <form>
-        <input type="text" placeholder="Username"/>
-        <input type="text" placeholder="Password"/>
-      </form>
-    </div> */}
     <div id="loginpage" class={"hero " + chooseBanner()}>
         <div class="form-box" >
         <h1>Effectue Admin</h1>

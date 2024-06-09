@@ -1,18 +1,30 @@
+/**
+ * File Name: Home.tsx
+ * Author: BunnyGamez
+ * Created Date: May 23rd 2024
+ * 
+ * Description:
+ * This has the Home Page for the launcher with a LAUNCH button and a few selectors
+ * 
+ * Copyright (c) 2024 BunnyGamez
+ * 
+ * This file is part of the Effectue project.
+ */
 
-import { Component, createEffect, createSignal, onMount } from "solid-js";
+import { Component, createEffect, onMount } from "solid-js";
 import createPropsState from '../../utils/createPropsState'
-import mailImg from "../../assets/Launcher/Mail.png"
+// import mailImg from "../../assets/Launcher/Mail.png"
 import notifImg from "../../assets/Launcher/notif.png"
 
-import closeImg from "../../assets/Launcher/close.png"
+// import closeImg from "../../assets/Launcher/close.png"
 
 import effectue_banner2Img from "../../assets/Launcher/effectue_banner2.svg"
-import skinImg from "../../assets/Launcher/skin.png"
+// import skinImg from "../../assets/Launcher/skin.png"
 import chocomenuImg from "../../assets/Launcher/choco-menu.png"
 import effectue_faviconImg from "../../assets/Launcher/effectue_favicon.svg"
 import plusImg from "../../assets/Launcher/plus.png"
 
-import controllerImg from "../../assets/Launcher/sidebar/controller.png"
+// import controllerImg from "../../assets/Launcher/sidebar/controller.png"
 import puzzleImg from "../../assets/Launcher/sidebar/puzzle.png"
 import { Popover } from "solid-bootstrap";
 
@@ -22,47 +34,49 @@ interface HomeProps {
 }
 
 const Home: Component<HomeProps> = (props: HomeProps) => {
-  console.log(typeof createPropsState)
+  // console.log(typeof createPropsState)
   const [clientName, setClient] = createPropsState(props.clientName)
   const [launchDet, setLaunchDet] = createPropsState(props.launchDetails)
 
 
   createEffect(()=>{
-    document.querySelector(':root')!.style.setProperty('--homeLaunchButtonColor', clientName().themeColor);
-    document.querySelector(':root')!.style.setProperty('--launchmodSelector', clientName().themeColor);
+    const rootElement = document.querySelector(':root') as HTMLElement
+    rootElement.style.setProperty('--homeLaunchButtonColor', clientName().themeColor);
+    rootElement.style.setProperty('--launchmodSelector', clientName().themeColor);
     
   })
 
 
 
   onMount(()=>{
-
-    document.getElementById('UseClientMods')!.checked = launchDet().useEffectueMods
+    const useClientModsElem = document.getElementById('UseClientMods') as HTMLInputElement;
+    useClientModsElem.checked= launchDet().useEffectueMods
     if (launchDet().allowEffectueMods == true){
-      document.getElementById('UseClientMods')!.disabled = false
+      useClientModsElem.disabled = false
     }else if (launchDet().allowEffectueMods == false){
-      document.getElementById('UseClientMods')!.disabled = true
+      useClientModsElem.disabled = true
     }
     
+    const useExistingModsElem = document.getElementById('UseExistingMods') as HTMLInputElement;
     // console.log(launchDet().useEffectueMods)
-    document.getElementById('UseExistingMods')!.checked = launchDet().useExistingMods
+    useExistingModsElem.checked = launchDet().useExistingMods
     if (launchDet().allowExistingMods == true){
-      document.getElementById('UseExistingMods')!.disabled = false
+      useExistingModsElem.disabled = false
     }else if (launchDet().allowExistingMods == false){
-      document.getElementById('UseExistingMods')!.disabled = true
+      useExistingModsElem.disabled = true
     }
     // console.log(launchDet().useExistingMods)
   })
 
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const checkboxClientChange = (event: unknown) => {
+  const checkboxClientChange = (event: { currentTarget: { checked: boolean; }; }) => {
     const launchDetTemp = launchDet()
     launchDetTemp.useEffectueMods = event.currentTarget.checked;
     setLaunchDet(launchDetTemp)
     // console.log(launchDet().useEffectueMods)  
   };
-  const checkboxExistingChange = (event: unknown) => {
+  const checkboxExistingChange = (event: { currentTarget: { checked: boolean; }; }) => {
     const launchDetTemp = launchDet()
     launchDetTemp.useExistingMods = event.currentTarget.checked;
     setLaunchDet(launchDetTemp)

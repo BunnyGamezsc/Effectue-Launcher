@@ -1,3 +1,15 @@
+/**
+ * File Name: Clients.tsx
+ * Author: BunnyGamez
+ * Created Date: October 1st 2023
+ * 
+ * Description:
+ * This is for v2.0 where you can choose from custom "clients" that have their own set of mods
+ * 
+ * Copyright (c) 2024 BunnyGamez
+ * 
+ * This file is part of the Effectue project.
+ */
 import { Component } from "solid-js";
 
 const Clients: Component = () => {
