@@ -197,6 +197,9 @@ const Launcher: Component = () => {
           <Match when={pageIndex() == 2}>
             <Clients/>
           </Match>
+          <Match when={pageIndex() == 3}>
+            <div style="position: relative;top: -20rem;left: 32vw;padding-top: 90vh;" id="loadingDIV"><h1>...</h1></div>
+          </Match>
         </Switch>
         <div style={versionsDisplayStyle()}>
           <Versions selectedVersion={[selectedVersion, setselectedVersion]} launchingText={[launchingText, setLaunchingText]}/>

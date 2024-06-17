@@ -4,12 +4,8 @@ version = 3
 
 [[package]]
 name = "Effectue"
-version = "0.0.0"
+version = "0.0.1"
 dependencies = [
- "mc_auth",
- "mc_bootstrap",
- "mc_downloader",
- "mc_service",
  "reqwest",
  "serde",
  "serde_json",
@@ -85,17 +81,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d92bec98840b8f03a5ff5413de5293bfcd8bf96467cf5452609f939ec6f5de16"
 
 [[package]]
-name = "async-trait"
-version = "0.1.74"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a66537f1bb974b254c98ed142ff995236e81b9d0fe4db0575f46612cb15eb0f9"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn 2.0.38",
-]
-
-[[package]]
 name = "atk"
 version = "0.15.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -117,17 +102,6 @@ dependencies = [
  "gobject-sys",
  "libc",
  "system-deps 6.1.2",
-]
-
-[[package]]
-name = "atty"
-version = "0.2.14"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d9b39be18770d11421cdb1b9947a45dd3f37e93092cbf377614828a319d5fee8"
-dependencies = [
- "hermit-abi 0.1.19",
- "libc",
- "winapi",
 ]
 
 [[package]]
@@ -332,16 +306,6 @@ name = "cfg-if"
 version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
-
-[[package]]
-name = "chksum"
-version = "0.1.0-rc5"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5001866ceb6c57766b5aae0f3f8b339bb00f4dedbd759f286745157312b03a47"
-dependencies = [
- "atty",
- "thiserror",
-]
 
 [[package]]
 name = "chrono"
@@ -786,28 +750,12 @@ dependencies = [
 ]
 
 [[package]]
-name = "futures"
-version = "0.3.29"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "da0290714b38af9b4a7b094b8a37086d1b4e61f2df9122c3cad2577669145335"
-dependencies = [
- "futures-channel",
- "futures-core",
- "futures-executor",
- "futures-io",
- "futures-sink",
- "futures-task",
- "futures-util",
-]
-
-[[package]]
 name = "futures-channel"
 version = "0.3.29"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ff4dd66668b557604244583e3e1e1eada8c5c2e96a6d0d6653ede395b78bbacb"
 dependencies = [
  "futures-core",
- "futures-sink",
 ]
 
 [[package]]
@@ -862,7 +810,6 @@ version = "0.3.29"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a19526d624e703a3179b3d322efec918b6246ea0fa51d41124525f00f1cc8104"
 dependencies = [
- "futures-channel",
  "futures-core",
  "futures-io",
  "futures-macro",
@@ -1225,15 +1172,6 @@ name = "heck"
 version = "0.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "95505c38b4572b2d910cecb0281560f54b440a19336cbbcb27bf6ce6adc6f5a8"
-
-[[package]]
-name = "hermit-abi"
-version = "0.1.19"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "62b467343b94ba476dcb2500d242dadbb39557df889310ac77c5d99100aaac33"
-dependencies = [
- "libc",
-]
 
 [[package]]
 name = "hermit-abi"
@@ -1695,57 +1633,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2532096657941c2fea9c289d370a250971c689d4f143798ff67113ec042024a5"
 
 [[package]]
-name = "mc_auth"
-version = "0.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9caa6421e366ca5f3c01aa8d7e46ff8da85f91d07b41101a51163df5c1a36234"
-dependencies = [
- "reqwest",
- "serde",
- "serde_json",
- "thiserror",
-]
-
-[[package]]
-name = "mc_bootstrap"
-version = "0.1.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "79412fd237715c6b12f001e6049fe98768e1564f87b8fd5b7e9bc156593ee01c"
-dependencies = [
- "serde",
- "serde_json",
- "thiserror",
-]
-
-[[package]]
-name = "mc_downloader"
-version = "0.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c3a6998b4dd4a8266cec372ae60df277a1cb6bcbfdcf9504475ed143b114396c"
-dependencies = [
- "async-trait",
- "chksum",
- "futures",
- "reqwest",
- "serde",
- "serde_json",
- "thiserror",
- "tokio",
-]
-
-[[package]]
-name = "mc_service"
-version = "0.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "581bc807498d8d289219e3aea617a93ea44830eb24410e5ec4bdd45893724a6a"
-dependencies = [
- "reqwest",
- "serde",
- "serde_json",
- "thiserror",
-]
-
-[[package]]
 name = "memchr"
 version = "2.6.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1891,7 +1778,7 @@ version = "1.16.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4161fcb6d602d4d2081af7c3a45852d875a03dd337a6bfdd6e06407b61342a43"
 dependencies = [
- "hermit-abi 0.3.3",
+ "hermit-abi",
  "libc",
 ]
 

@@ -11,7 +11,8 @@
  * This file is part of the Effectue project.
  */
 
-import { Component, createEffect, onMount } from "solid-js";
+import { Component, createEffect, createSignal, onMount } from "solid-js";
+import fetchSettings from "../../Settings"
 import createPropsState from '../../utils/createPropsState'
 // import mailImg from "../../assets/Launcher/Mail.png"
 import notifImg from "../../assets/Launcher/notif.png"
@@ -35,8 +36,10 @@ interface HomeProps {
 
 const Home: Component<HomeProps> = (props: HomeProps) => {
   // console.log(typeof createPropsState)
+  const {settings} = fetchSettings;
   const [clientName, setClient] = createPropsState(props.clientName)
   const [launchDet, setLaunchDet] = createPropsState(props.launchDetails)
+  const [pinnedClients, setPinnedClients] = createSignal([])
 
 
   createEffect(()=>{
@@ -66,6 +69,12 @@ const Home: Component<HomeProps> = (props: HomeProps) => {
       useExistingModsElem.disabled = true
     }
     // console.log(launchDet().useExistingMods)
+    if (pinnedClients.length == 0){
+      console.log("SETTING UP PINNED CLIENTS")
+      // getSettings from App.tsx --> Rust gets Settings from elSettings.json
+      console.log(settings().pinnedClients);
+    }
+    
   })
 
 
@@ -100,7 +109,7 @@ const Home: Component<HomeProps> = (props: HomeProps) => {
                       <img src={chocomenuImg} alt="" width="20" height="20" class="clientMenu"/>
                       <h1>CLIENTS</h1>
                       <h1 style="padding-left: 1rem;padding-right: 1rem;font-size: 15px;">|</h1>
-                      <div class="server-icon-list">
+                      <div class="server-icon-list" id="lastUsedClients">
 
                         <div class="navbarDiv"><img src={effectue_faviconImg} alt=""/></div>
                         <div class="navbarDiv"><img src={plusImg} alt=""/></div>

@@ -19,18 +19,30 @@ import { Show, createSignal, onMount } from "solid-js";
 import { invoke } from "@tauri-apps/api";
 import { appDataDir } from "@tauri-apps/api/path";
 import Testing from "./pages/Testing";
+import { createStore } from "solid-js/store";
 
 function App() {
 
 
 
 
-  
+  const [appCache, setAppCache] = createStore([])
+  /* 
+  What should be stored in the App Cache and is it ** stored offline??
+
+  - ** Minecraft Versions Data (Restored into appCache each time the app is reloaded)
+  - ** Last 3 used MC versions (in the beginning is initialized as 1.20 (the version I started the project on), 1.15 (my first mc version), 
+    and 1.16.1 (best for speedrunning!))
+
+
+
+  */
   const [setup, setSetupState] = createSignal(false);
   const [hideSplash, setSplashData] = createSignal(false);
   const [hideSplash2, setSplash] = createSignal(false);
   // eslint-disable-next-line prefer-const
   let testing = 0;
+
   // useEffect(() => {
   //   if (sampleData.length === 0) {
   //     const toRef = setTimeout(() => {

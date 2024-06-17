@@ -1,7 +1,7 @@
 [package]
 name = "Effectue"
-version = "0.0.0"
-description = "A Tauri App"
+version = "0.0.1"
+description = "Effectue - Effective Performance!"
 authors = ["BunnyGamez"]
 license = "Apache 2.0"
 repository = "https://github.com/BunnyGamezsc/Effectue-Solid"
@@ -18,10 +18,6 @@ tauri = { version = "1.4", features = [ "shell-open", "path-all", "http-all", "w
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 tauri-invoke-http = { git = "https://github.com/tauri-apps/tauri-invoke-http", branch = "dev" }
-mc_auth = "0.1.0"
-mc_service = "0.1.0"
-mc_downloader = "0.1.0"
-mc_bootstrap = "0.1.1"
 reqwest = "0.11.20"
 
 
