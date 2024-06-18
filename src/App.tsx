@@ -24,14 +24,23 @@ import { createStore } from "solid-js/store";
 function App() {
 
 
-
-
   const [appCache, setAppCache] = createStore([])
+  /*
+    invoke("get_settings")
+      .then((settingsFromFile) => {
+        setSettings(settingsFromFile as object)
+        console.log(settingsFromFile);
+      })
+      .catch((error) => console.error(error));
+
+
+  */
+
   /* 
-  What should be stored in the App Cache and is it ** stored offline??
+  What should be stored in the App Cache and is it ** stored offline?? What should be stored in the %% settings
 
   - ** Minecraft Versions Data (Restored into appCache each time the app is reloaded)
-  - ** Last 3 used MC versions (in the beginning is initialized as 1.20 (the version I started the project on), 1.15 (my first mc version), 
+  - %% Last 3 used MC versions (in the beginning is initialized as 1.20 (the version I started the project on), 1.15 (my first mc version), 
     and 1.16.1 (best for speedrunning!))
 
 

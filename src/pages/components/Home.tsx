@@ -12,7 +12,6 @@
  */
 
 import { Component, createEffect, createSignal, onMount } from "solid-js";
-import fetchSettings from "../../Settings"
 import createPropsState from '../../utils/createPropsState'
 // import mailImg from "../../assets/Launcher/Mail.png"
 import notifImg from "../../assets/Launcher/notif.png"
@@ -36,7 +35,6 @@ interface HomeProps {
 
 const Home: Component<HomeProps> = (props: HomeProps) => {
   // console.log(typeof createPropsState)
-  const {settings} = fetchSettings;
   const [clientName, setClient] = createPropsState(props.clientName)
   const [launchDet, setLaunchDet] = createPropsState(props.launchDetails)
   const [pinnedClients, setPinnedClients] = createSignal([])
@@ -71,8 +69,8 @@ const Home: Component<HomeProps> = (props: HomeProps) => {
     // console.log(launchDet().useExistingMods)
     if (pinnedClients.length == 0){
       console.log("SETTING UP PINNED CLIENTS")
-      // getSettings from App.tsx --> Rust gets Settings from elSettings.json
-      console.log(settings().pinnedClients);
+      // getSettings --> Rust gets Settings from elSettings.json
+      console.log();
     }
     
   })
