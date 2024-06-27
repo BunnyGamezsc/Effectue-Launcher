@@ -8,28 +8,35 @@ _**DEV Section:** This Branch has up to date (maybe bugged) work that is not a f
 [![Tauri](https://img.shields.io/badge/Tauri-24C8D8.svg?style=for-the-badge&logo=Tauri&logoColor=white)](https://tauri.app/)
 [![Rust](https://img.shields.io/badge/rust-%23000000.svg?style=for-the-badge&logo=rust&logoColor=white)](https://www.rust-lang.org/)
 
-### Purpose
-Effectue was created to provide a customizable and fast Minecraft Experience with easy to use mods/modpacks!
+## Purpose
+Effectue is being created to provide a customizable and fast Minecraft Experience with easy to use mods/modpacks!
 
-## From the Launcher...
-#### What can you do with the launcher?
-- Play any version of Minecraft (Beta 1.0.0)
-- Automatic performance mods with Forge or Fabric (Beta 2.0.0) (Quilt in Beta 2.3.0)
-- Use your own custom modpack of selected mods (Beta 2.1.0)
-- Use any library of community modpacks (v2.0.0)
-- Log on to servers with mods (that are shared to everyone or a secret) (v2.0.0)
+(This project is in progress for the first release)
 
-## To the Client...
-### For Server Creators...
+### The Problems
+1. Each new Minecraft version requires a whole new mod loader version and new mods...
+2. Custom Modded Servers cannot easily restrict which mods the client can have...
+### The Solutions
+1. Effectue streamlines this process and automatically downloads mods and launches minecraft!
+2. Effectue's custom server modpacks can restrict this and only allow specific mods on a server!
+
+
+### Features!!
+- Play any version of Minecraft
+- Automatic performance mods with Fabric (and maybe Quilt?)
+- Use your own mods with Effectue
+- Use any library of community modpacks (v2.0)
+- Log on to servers with mods (that are shared to everyone or a secret) (v2.1)
+
+#### For Server Creators...
 - Restrict Singleplayer and Multiplayer Access to your server when installing the modpack
 
-### For Users...
-- A special signature for the Effectue Launcher 
 
-
-## As you can see, Effectue provides much more customizablity all in the Launcher itself
 
 ## But Effectue is different than other launchers
+Effectue provides much more customizablity all in the Launcher itself
+
+(Projected Specifications)
 
 | Effectue    | Lunar |
 | ----------- | ----------- |
@@ -110,4 +117,4 @@ Run with npm (development mode)
 
 **Frontend:** SolidJS, Tauri
 
-**Backend:** Rust, SQLite
+**Backend:** Rust
